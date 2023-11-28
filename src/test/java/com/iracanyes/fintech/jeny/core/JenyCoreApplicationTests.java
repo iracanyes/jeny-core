@@ -2,7 +2,9 @@
 
 package com.iracanyes.fintech.jeny.core;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Basic integration tests for service demo application.
@@ -14,8 +16,8 @@ public class JenyCoreApplicationTests {
 
 
 	@Test
-	public void supplyLoan() {
-
+	void supplyLoan() {
+		assertEquals(true, true);
 	}
 
 }

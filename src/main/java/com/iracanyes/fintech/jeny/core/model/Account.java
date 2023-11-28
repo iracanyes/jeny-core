@@ -1,17 +1,25 @@
 package com.iracanyes.fintech.jeny.core.model;
 
 import lombok.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Data
-@ToString
-@Builder
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor
+
 /**
  *
  * @param <T> Type of the accountId parameter
  */
+@Document("account")
+@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor(force = true)
+//@RequiredArgsConstructor
 public class Account<T> {
+  @Id
+  private final ObjectId _id;
   /**
    * Account ID
    */
@@ -20,65 +28,131 @@ public class Account<T> {
   /**
    * Base currency
    */
-  private final String currency;
+  @Setter
+  private String currency;
 
   /**
    * Total amount of assets
    */
-  private final double totalBalance;
+  @Setter
+  private double totalBalance;
 
   /**
    * Unrealised Profit and losses
    */
-  private final double unrealisedPnl;
+  @Setter
+  private double unrealisedPnl;
 
   /**
    * Realised Profit and losses
    */
-  private final double realisedPnl;
+  @Setter
+  private double realisedPnl;
 
   /**
    * Total net assets value
    */
-  private final double netAssetValue;
+  @Setter
+  private double netAssetValue;
 
   /**
    * Amount available to trade divided by total amount
    */
-  private final double amountAvailableRatio;
+  @Setter
+  private double amountAvailableRatio;
 
   /**
    *
    */
-  private final double marginUsed;
+  @Setter
+  private double marginUsed;
 
   /**
    * Margin available for this account
    */
-  private final double marginAvailable;
+  @Setter
+  private double marginAvailable;
 
-  private final double marginRate;
+  @Setter
+  private double marginRate;
 
   /**
    * Number of open trades for this account
    */
-  private final long openTrades;
+  @Setter
+  private long openTrades;
 
+  public Account(ObjectId id, T accountId){
+    this._id = id;
+    this.accountId = accountId;
+    this.currency = "USD";
+    this.netAssetValue = 0;
+    this.totalBalance = 0;
+    this.unrealisedPnl = 0;
+    this.realisedPnl = 0;
+    this.amountAvailableRatio = 0;
+    this.marginUsed = 0;
+    this.marginAvailable = 0;
+    this.marginRate = 0;
+    this.openTrades = 0;
+  }
+
+  /**
+   * REMARQUE: Les paramètres du constructeur doivent être déclarée dans l'ordre de leur définition
+   * @param accountId     Account ID
+   * @param currency      Currency used
+   * @param netAssetValue Net asset value
+   * @param totalBalance  Total Balance of the account
+   * @param unrealisedPnl Unrealized Profit and Loss
+   * @param realisedPnl   Realized Profit and Loss
+   * @param amountAvailableRatio  Amount available ratio
+   * @param marginUsed            Margin used
+   * @param marginAvailable       Margin available
+   * @param marginRate            Margin rate
+   * @param openTrades            Number of open trades
+   */
+  public Account(
+      ObjectId id,
+      T accountId,
+      String currency,
+      double netAssetValue,
+      double totalBalance,
+      double unrealisedPnl,
+      double realisedPnl,
+      double amountAvailableRatio,
+      double marginUsed,
+      double marginAvailable,
+      double marginRate,
+      long openTrades
+  ){
+    this._id = id;
+    this.accountId = accountId;
+    this.currency = currency;
+    this.netAssetValue = netAssetValue;
+    this.totalBalance = totalBalance;
+    this.unrealisedPnl = unrealisedPnl;
+    this.realisedPnl = realisedPnl;
+    this.openTrades = openTrades;
+    this.amountAvailableRatio = amountAvailableRatio;
+    this.marginUsed = marginUsed;
+    this.marginAvailable = marginAvailable;
+    this.marginRate = marginRate;
+  }
 
   @Override
   public String toString(){
     return String.format(
-      "Account<%s>[" +
-        "currencty=%s, " +
-        "netAssetValue=%5.2f, " +
-        "totalBalance=%5.2f, " +
-        "unrealisedPnL=%5.2f, " +
-        "realisedPnL=%5.2f, " +
-        "openTrades=%d, " +
-        "amountAvailableRatio=%1.5f, " +
-        "marginUsed=%5.2f, " +
-        "marginAvailable=%5.2f, " +
-        "marginRate=%1.2f]",
+      "Account<%s>{" +
+        "currency: %s, " +
+        "netAssetValue: %5.2f, " +
+        "totalBalance: %5.2f, " +
+        "unrealisedPnL: %5.2f, " +
+        "realisedPnL: %5.2f, " +
+        "openTrades: %d, " +
+        "amountAvailableRatio: %1.5f, " +
+        "marginUsed: %5.2f, " +
+        "marginAvailable: %5.2f, " +
+        "marginRate: %1.2f}",
       accountId,
       currency,
       netAssetValue,

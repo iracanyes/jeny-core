@@ -63,3 +63,7 @@ build/
 hs_err_pid*
 replay_pid*
 
+
+# Custom
+# Build directory
+libs
