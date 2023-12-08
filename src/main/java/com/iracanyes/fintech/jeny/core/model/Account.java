@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("account")
 @Data
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor(force = true)
 //@RequiredArgsConstructor

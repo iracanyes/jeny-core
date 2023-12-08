@@ -67,3 +67,26 @@ replay_pid*
 # Custom
 # Build directory
 libs
+
+# Jetbrains IDE
+.idea/**
+# Documentation
+docs
+# backup files
+**/*.save
+*.local.*
+
+# Environment files
+.env
+**/.env
+
+.env.local
+**/.env.local
+
+# Certificates
+**/*.pem
+
+
+# Keystore and truststore
+**/*.p12
+**/*.jks

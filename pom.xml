@@ -23,23 +23,17 @@
   </organization>
 
   <properties>
-    <spring.cloud.dependencies.version>2023.0.0-RC1</spring.cloud.dependencies.version>
+    <spring.cloud.dependencies.version>2023.0.0</spring.cloud.dependencies.version>
   </properties>
 
   <dependencies>
     <!--================== Security ============================ -->
+    <!--
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-vault-config</artifactId>
-      <exclusions>
-        <!--
-        <exclusion>
-          <groupId>org.springframework.vault</groupId>
-          <artifactId>spring-vault-core</artifactId>
-        </exclusion>
-        -->
-      </exclusions>
     </dependency>
+    -->
     <!--
     <dependency>
       <groupId>org.springframework.vault</groupId>
